@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="syncfusion:SfDataGridLabel">
+                <Setter Property="FontAutoScalingEnabled" Value="False" />
+            </Style>
+            <Style TargetType="syncfusion:SfDataGridHeaderLabel">
+                <Setter Property="FontAutoScalingEnabled"
+                        Value="False" />
+            </Style>
+            <Style TargetType="syncfusion:DataGridHeaderCell">
+
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="Padding"
+                        Value="1" />
+            </Style>
+
+            <Style TargetType="syncfusion:DataGridCell"
+                   x:Key="ComponentCellStyle">
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="TextAlignment"
+                        Value="Start" />
+                <Setter Property="Padding"
+                        Value="5,5,5,5" />
+                <Setter Property="FontAttributes"
+                        Value="Bold" />
+            </Style>
+
+            <Style TargetType="syncfusion:DataGridCell">
+                <Setter Property="FontSize"
+                        Value="12" />
+                <Setter Property="Margin"
+                        Value="0,0,0,0" />
+                <Setter Property="Padding"
+                        Value="0,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <syncfusion:SfDataGrid x:Name="sfGrid"
+                           Margin="0,0,0,0"
+                           Padding="0"
+                           GridLinesVisibility="Both"
+                           HeaderGridLinesVisibility="Both"
+                           ColumnWidthMode="Fill"
+                           HeaderRowHeight="30"
+                           RowHeight="40"
+                           HorizontalScrollBarVisibility="Never"
+                           VerticalScrollBarVisibility="Never"
+                           AutoGenerateColumnsMode="None"
+                           AllowResizingColumns="False"
+                           ItemsSource="{Binding Employees}">
+
+        <syncfusion:SfDataGrid.DefaultStyle>
+            <syncfusion:DataGridStyle HeaderRowBackground="#e0e0e0"
+                                       HeaderRowTextColor="Black"
+                                       RowBackground="White"
+                                       RowTextColor="Black"
+                                       SelectionBackground="#AFD5FB"
+                                       CurrentCellBorderColor="#AFD5FB"
+                                       GridLineStrokeThickness="2"
+                                       GridLineColor="#e0e0e0" />
+        </syncfusion:SfDataGrid.DefaultStyle>
+
+        <syncfusion:SfDataGrid.Columns>
+
+            <syncfusion:DataGridNumericColumn MappingName="EmployeeID"
+                                              HeaderTextAlignment="Center"
+                                              CellTextAlignment="Center"
+                                              Format="#" HeaderText="Employee ID" />
+            <syncfusion:DataGridTextColumn MappingName="Name" 
+                                           HeaderText="Employee Name"
+                                           HeaderTextAlignment="Center"
+                                           CellTextAlignment="Center" />
+            <syncfusion:DataGridTextColumn MappingName="Title"
+                                           HeaderText="Designation"
+                                           HeaderTextAlignment="Center"
+                                           CellTextAlignment="Center" />
+            <syncfusion:DataGridDateColumn MappingName="HireDate"
+                                           HeaderText="Hire Date"
+                                           Width="130"
+                                           HeaderTextAlignment="Center"
+                                          />
+
+        </syncfusion:SfDataGrid.Columns>
+
+    </syncfusion:SfDataGrid>
+
+</ContentPage>
